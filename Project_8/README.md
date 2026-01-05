@@ -6,7 +6,7 @@ This project demonstrates deploying a static HTML/CSS/JS portfolio website (Nano
 
 ## Project Structure
 
-Project_5/
+Project_8/
 ├── css/ # Stylesheets
 ├── js/ # JavaScript files
 ├── img/ # Images
