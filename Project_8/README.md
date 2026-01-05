@@ -1,4 +1,4 @@
-# Project 5 - Nano-Folio Deployment on Azure
+# Project 8 - Nano-Folio Deployment on Azure
 
 ## Overview
 
