@@ -1,0 +1,714 @@
+mehran [ ~ ]$ chmod +x deploy-vm.sh
+mehran [ ~ ]$ ./deploy-vm.sh
+Creating resource group...
+{
+  "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano",
+  "location": "westus2",
+  "managedBy": null,
+  "name": "rg-session19-nano",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+Creating VM...
+The default value of '--size' will be changed to 'Standard_D2s_v5' from 'Standard_DS1_v2' in a future release.
+{
+  "fqdns": "",
+  "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Compute/virtualMachines/nano-vm",
+  "location": "westus2",
+  "macAddress": "7C-ED-8D-D3-44-19",
+  "powerState": "VM running",
+  "privateIpAddress": "10.0.0.4",
+  "publicIpAddress": "4.155.61.154",
+  "resourceGroup": "rg-session19-nano"
+}
+VM public IP: 4.155.61.154
+Opening port 80 for Apache...
+{
+  "defaultSecurityRules": [
+    {
+      "access": "Allow",
+      "description": "Allow inbound traffic from all VMs in VNET",
+      "destinationAddressPrefix": "VirtualNetwork",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "*",
+      "destinationPortRanges": [],
+      "direction": "Inbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/defaultSecurityRules/AllowVnetInBound",
+      "name": "AllowVnetInBound",
+      "priority": 65000,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "VirtualNetwork",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules"
+    },
+    {
+      "access": "Allow",
+      "description": "Allow inbound traffic from azure load balancer",
+      "destinationAddressPrefix": "*",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "*",
+      "destinationPortRanges": [],
+      "direction": "Inbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/defaultSecurityRules/AllowAzureLoadBalancerInBound",
+      "name": "AllowAzureLoadBalancerInBound",
+      "priority": 65001,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "AzureLoadBalancer",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules"
+    },
+    {
+      "access": "Deny",
+      "description": "Deny all inbound traffic",
+      "destinationAddressPrefix": "*",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "*",
+      "destinationPortRanges": [],
+      "direction": "Inbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/defaultSecurityRules/DenyAllInBound",
+      "name": "DenyAllInBound",
+      "priority": 65500,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "*",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules"
+    },
+    {
+      "access": "Allow",
+      "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+      "destinationAddressPrefix": "VirtualNetwork",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "*",
+      "destinationPortRanges": [],
+      "direction": "Outbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/defaultSecurityRules/AllowVnetOutBound",
+      "name": "AllowVnetOutBound",
+      "priority": 65000,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "VirtualNetwork",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules"
+    },
+    {
+      "access": "Allow",
+      "description": "Allow outbound traffic from all VMs to Internet",
+      "destinationAddressPrefix": "Internet",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "*",
+      "destinationPortRanges": [],
+      "direction": "Outbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/defaultSecurityRules/AllowInternetOutBound",
+      "name": "AllowInternetOutBound",
+      "priority": 65001,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "*",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules"
+    },
+    {
+      "access": "Deny",
+      "description": "Deny all outbound traffic",
+      "destinationAddressPrefix": "*",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "*",
+      "destinationPortRanges": [],
+      "direction": "Outbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/defaultSecurityRules/DenyAllOutBound",
+      "name": "DenyAllOutBound",
+      "priority": 65500,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "*",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/defaultSecurityRules"
+    }
+  ],
+  "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+  "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG",
+  "location": "westus2",
+  "name": "nano-vmNSG",
+  "networkInterfaces": [
+    {
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/RG-SESSION19-NANO/providers/Microsoft.Network/networkInterfaces/NANO-VMVMNIC",
+      "resourceGroup": "RG-SESSION19-NANO"
+    }
+  ],
+  "provisioningState": "Succeeded",
+  "resourceGroup": "rg-session19-nano",
+  "resourceGuid": "76fcbe5e-8d9f-4c7d-8a7e-b5863de517a9",
+  "securityRules": [
+    {
+      "access": "Allow",
+      "destinationAddressPrefix": "*",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "22",
+      "destinationPortRanges": [],
+      "direction": "Inbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/securityRules/default-allow-ssh",
+      "name": "default-allow-ssh",
+      "priority": 1000,
+      "protocol": "Tcp",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "*",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    },
+    {
+      "access": "Allow",
+      "destinationAddressPrefix": "*",
+      "destinationAddressPrefixes": [],
+      "destinationPortRange": "80",
+      "destinationPortRanges": [],
+      "direction": "Inbound",
+      "etag": "W/\"26bd10c1-f5d5-41ed-85dc-4e78785501bc\"",
+      "id": "/subscriptions/bbe252d2-6320-4d01-87f0-218ffde5d458/resourceGroups/rg-session19-nano/providers/Microsoft.Network/networkSecurityGroups/nano-vmNSG/securityRules/open-port-80",
+      "name": "open-port-80",
+      "priority": 900,
+      "protocol": "*",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "rg-session19-nano",
+      "sourceAddressPrefix": "*",
+      "sourceAddressPrefixes": [],
+      "sourcePortRange": "*",
+      "sourcePortRanges": [],
+      "type": "Microsoft.Network/networkSecurityGroups/securityRules"
+    }
+  ],
+  "tags": {},
+  "type": "Microsoft.Network/networkSecurityGroups"
+}
+Installing Apache2 and deploying Nano project...
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Warning: Permanently added '4.155.61.154' (ED25519) to the list of known hosts.
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1044-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Jan  5 16:03:48 UTC 2026
+
+  System load:  0.86              Processes:             123
+  Usage of /:   5.5% of 28.89GB   Users logged in:       0
+  Memory usage: 3%                IPv4 address for eth0: 10.0.0.4
+  Swap usage:   0%
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 http://azure.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://azure.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+Get:3 http://azure.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+Get:4 http://azure.archive.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+Get:5 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [14.1 MB]
+Get:6 http://azure.archive.ubuntu.com/ubuntu jammy/universe Translation-en [5652 kB]
+Get:7 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 c-n-f Metadata [286 kB]
+Get:8 http://azure.archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [217 kB]
+Get:9 http://azure.archive.ubuntu.com/ubuntu jammy/multiverse Translation-en [112 kB]
+Get:10 http://azure.archive.ubuntu.com/ubuntu jammy/multiverse amd64 c-n-f Metadata [8372 B]
+Get:11 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3161 kB]
+Get:12 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [484 kB]
+Get:13 http://azure.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [5043 kB]
+Get:14 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1244 kB]
+Get:15 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [310 kB]
+Get:16 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [30.0 kB]
+Get:17 http://azure.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [57.6 kB]
+Get:18 http://azure.archive.ubuntu.com/ubuntu jammy-updates/multiverse Translation-en [13.2 kB]
+Get:19 http://azure.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 c-n-f Metadata [600 B]
+Get:20 http://azure.archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [69.4 kB]
+Get:21 http://azure.archive.ubuntu.com/ubuntu jammy-backports/main Translation-en [11.5 kB]
+Get:22 http://azure.archive.ubuntu.com/ubuntu jammy-backports/main amd64 c-n-f Metadata [412 B]
+Get:23 http://azure.archive.ubuntu.com/ubuntu jammy-backports/restricted amd64 c-n-f Metadata [116 B]
+Get:24 http://azure.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [31.7 kB]
+Get:25 http://azure.archive.ubuntu.com/ubuntu jammy-backports/universe Translation-en [16.9 kB]
+Get:26 http://azure.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 c-n-f Metadata [672 B]
+Get:27 http://azure.archive.ubuntu.com/ubuntu jammy-backports/multiverse amd64 c-n-f Metadata [116 B]
+Get:28 http://azure.archive.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2900 kB]
+Get:29 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1007 kB]
+Get:30 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe Translation-en [221 kB]
+Get:31 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [22.3 kB]
+Get:32 http://azure.archive.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [50.5 kB]
+Get:33 http://azure.archive.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [10.2 kB]
+Get:34 http://azure.archive.ubuntu.com/ubuntu jammy-security/multiverse amd64 c-n-f Metadata [376 B]
+Fetched 35.4 MB in 5s (6555 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+All packages are up to date.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+wget is already the newest version (1.21.2-2ubuntu1.1).
+wget set to manually installed.
+The following additional packages will be installed:
+  apache2-bin apache2-data apache2-utils bzip2 libapr1 libaprutil1
+  libaprutil1-dbd-sqlite3 libaprutil1-ldap liblua5.3-0 mailcap mime-support
+  ssl-cert
+Suggested packages:
+  apache2-doc apache2-suexec-pristine | apache2-suexec-custom www-browser
+  bzip2-doc zip
+The following NEW packages will be installed:
+  apache2 apache2-bin apache2-data apache2-utils bzip2 libapr1 libaprutil1
+  libaprutil1-dbd-sqlite3 libaprutil1-ldap liblua5.3-0 mailcap mime-support
+  ssl-cert unzip
+0 upgraded, 14 newly installed, 0 to remove and 0 not upgraded.
+Need to get 2317 kB of archives.
+After this operation, 8914 kB of additional disk space will be used.
+Get:1 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libapr1 amd64 1.7.0-8ubuntu0.22.04.2 [108 kB]
+Get:2 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libaprutil1 amd64 1.6.1-5ubuntu4.22.04.2 [92.8 kB]
+Get:3 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libaprutil1-dbd-sqlite3 amd64 1.6.1-5ubuntu4.22.04.2 [11.3 kB]
+Get:4 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libaprutil1-ldap amd64 1.6.1-5ubuntu4.22.04.2 [9170 B]
+Get:5 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 liblua5.3-0 amd64 5.3.6-1build1 [140 kB]
+Get:6 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 apache2-bin amd64 2.4.52-1ubuntu4.16 [1349 kB]
+Get:7 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 apache2-data all 2.4.52-1ubuntu4.16 [165 kB]
+Get:8 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 apache2-utils amd64 2.4.52-1ubuntu4.16 [89.3 kB]
+Get:9 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 mailcap all 3.70+nmu1ubuntu1 [23.8 kB]
+Get:10 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 mime-support all 3.66 [3696 B]
+Get:11 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 apache2 amd64 2.4.52-1ubuntu4.16 [97.9 kB]
+Get:12 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 bzip2 amd64 1.0.8-5build1 [34.8 kB]
+Get:13 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 ssl-cert all 1.1.2 [17.4 kB]
+Get:14 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 unzip amd64 6.0-26ubuntu3.2 [175 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 2317 kB in 0s (19.5 MB/s)
+Selecting previously unselected package libapr1:amd64.
+(Reading database ... 62835 files and directories currently installed.)
+Preparing to unpack .../00-libapr1_1.7.0-8ubuntu0.22.04.2_amd64.deb ...
+Unpacking libapr1:amd64 (1.7.0-8ubuntu0.22.04.2) ...
+Selecting previously unselected package libaprutil1:amd64.
+Preparing to unpack .../01-libaprutil1_1.6.1-5ubuntu4.22.04.2_amd64.deb ...
+Unpacking libaprutil1:amd64 (1.6.1-5ubuntu4.22.04.2) ...
+Selecting previously unselected package libaprutil1-dbd-sqlite3:amd64.
+Preparing to unpack .../02-libaprutil1-dbd-sqlite3_1.6.1-5ubuntu4.22.04.2_amd64.deb ...
+Unpacking libaprutil1-dbd-sqlite3:amd64 (1.6.1-5ubuntu4.22.04.2) ...
+Selecting previously unselected package libaprutil1-ldap:amd64.
+Preparing to unpack .../03-libaprutil1-ldap_1.6.1-5ubuntu4.22.04.2_amd64.deb ...
+Unpacking libaprutil1-ldap:amd64 (1.6.1-5ubuntu4.22.04.2) ...
+Selecting previously unselected package liblua5.3-0:amd64.
+Preparing to unpack .../04-liblua5.3-0_5.3.6-1build1_amd64.deb ...
+Unpacking liblua5.3-0:amd64 (5.3.6-1build1) ...
+Selecting previously unselected package apache2-bin.
+Preparing to unpack .../05-apache2-bin_2.4.52-1ubuntu4.16_amd64.deb ...
+Unpacking apache2-bin (2.4.52-1ubuntu4.16) ...
+Selecting previously unselected package apache2-data.
+Preparing to unpack .../06-apache2-data_2.4.52-1ubuntu4.16_all.deb ...
+Unpacking apache2-data (2.4.52-1ubuntu4.16) ...
+Selecting previously unselected package apache2-utils.
+Preparing to unpack .../07-apache2-utils_2.4.52-1ubuntu4.16_amd64.deb ...
+Unpacking apache2-utils (2.4.52-1ubuntu4.16) ...
+Selecting previously unselected package mailcap.
+Preparing to unpack .../08-mailcap_3.70+nmu1ubuntu1_all.deb ...
+Unpacking mailcap (3.70+nmu1ubuntu1) ...
+Selecting previously unselected package mime-support.
+Preparing to unpack .../09-mime-support_3.66_all.deb ...
+Unpacking mime-support (3.66) ...
+Selecting previously unselected package apache2.
+Preparing to unpack .../10-apache2_2.4.52-1ubuntu4.16_amd64.deb ...
+Unpacking apache2 (2.4.52-1ubuntu4.16) ...
+Selecting previously unselected package bzip2.
+Preparing to unpack .../11-bzip2_1.0.8-5build1_amd64.deb ...
+Unpacking bzip2 (1.0.8-5build1) ...
+Selecting previously unselected package ssl-cert.
+Preparing to unpack .../12-ssl-cert_1.1.2_all.deb ...
+Unpacking ssl-cert (1.1.2) ...
+Selecting previously unselected package unzip.
+Preparing to unpack .../13-unzip_6.0-26ubuntu3.2_amd64.deb ...
+Unpacking unzip (6.0-26ubuntu3.2) ...
+Setting up unzip (6.0-26ubuntu3.2) ...
+Setting up libapr1:amd64 (1.7.0-8ubuntu0.22.04.2) ...
+Setting up bzip2 (1.0.8-5build1) ...
+Setting up ssl-cert (1.1.2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+Setting up liblua5.3-0:amd64 (5.3.6-1build1) ...
+Setting up apache2-data (2.4.52-1ubuntu4.16) ...
+Setting up mailcap (3.70+nmu1ubuntu1) ...
+Setting up libaprutil1:amd64 (1.6.1-5ubuntu4.22.04.2) ...
+Setting up mime-support (3.66) ...
+Setting up libaprutil1-ldap:amd64 (1.6.1-5ubuntu4.22.04.2) ...
+Setting up libaprutil1-dbd-sqlite3:amd64 (1.6.1-5ubuntu4.22.04.2) ...
+Setting up apache2-utils (2.4.52-1ubuntu4.16) ...
+Setting up apache2-bin (2.4.52-1ubuntu4.16) ...
+Setting up apache2 (2.4.52-1ubuntu4.16) ...
+Enabling module mpm_event.
+Enabling module authz_core.
+Enabling module authz_host.
+Enabling module authn_core.
+Enabling module auth_basic.
+Enabling module access_compat.
+Enabling module authn_file.
+Enabling module authz_user.
+Enabling module alias.
+Enabling module dir.
+Enabling module autoindex.
+Enabling module env.
+Enabling module mime.
+Enabling module negotiation.
+Enabling module setenvif.
+Enabling module filter.
+Enabling module deflate.
+Enabling module status.
+Enabling module reqtimeout.
+Enabling conf charset.
+Enabling conf localized-error-pages.
+Enabling conf other-vhosts-access-log.
+Enabling conf security.
+Enabling conf serve-cgi-bin.
+Enabling site 000-default.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache2.service → /lib/systemd/system/apache2.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache-htcacheclean.service → /lib/systemd/system/apache-htcacheclean.service.
+Processing triggers for ufw (0.36.1-4ubuntu0.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.11) ...
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+--2026-01-05 16:04:25--  https://www.tooplate.com/zip-templates/2122_nano_folio.zip
+Resolving www.tooplate.com (www.tooplate.com)... 72.52.176.250
+Connecting to www.tooplate.com (www.tooplate.com)|72.52.176.250|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4804274 (4.6M) [application/zip]
+Saving to: ‘nano.zip’
+
+     0K .......... .......... .......... .......... ..........  1%  287K 16s
+    50K .......... .......... .......... .......... ..........  2%  575K 12s
+   100K .......... .......... .......... .......... ..........  3% 82.4M 8s
+   150K .......... .......... .......... .......... ..........  4%  575K 8s
+   200K .......... .......... .......... .......... ..........  5% 67.0M 6s
+   250K .......... .......... .......... .......... ..........  6%  110M 5s
+   300K .......... .......... .......... .......... ..........  7%  133M 4s
+   350K .......... .......... .......... .......... ..........  8%  585K 5s
+   400K .......... .......... .......... .......... ..........  9% 82.9M 4s
+   450K .......... .......... .......... .......... .......... 10% 96.3M 4s
+   500K .......... .......... .......... .......... .......... 11%  103M 3s
+   550K .......... .......... .......... .......... .......... 12% 83.5M 3s
+   600K .......... .......... .......... .......... .......... 13% 64.1M 3s
+   650K .......... .......... .......... .......... .......... 14%  152M 3s
+   700K .......... .......... .......... .......... .......... 15%  151M 2s
+   750K .......... .......... .......... .......... .......... 17%  599K 3s
+   800K .......... .......... .......... .......... .......... 18%  110M 2s
+   850K .......... .......... .......... .......... .......... 19%  103M 2s
+   900K .......... .......... .......... .......... .......... 20%  163M 2s
+   950K .......... .......... .......... .......... .......... 21% 75.1M 2s
+  1000K .......... .......... .......... .......... .......... 22%  109M 2s
+  1050K .......... .......... .......... .......... .......... 23% 61.3M 2s
+  1100K .......... .......... .......... .......... .......... 24% 56.7M 2s
+  1150K .......... .......... .......... .......... .......... 25% 57.6M 2s
+  1200K .......... .......... .......... .......... .......... 26% 72.6M 1s
+  1250K .......... .......... .......... .......... .......... 27% 92.4M 1s
+  1300K .......... .......... .......... .......... .......... 28%  100M 1s
+  1350K .......... .......... .......... .......... .......... 29%  149M 1s
+  1400K .......... .......... .......... .......... .......... 30%  176M 1s
+  1450K .......... .......... .......... .......... .......... 31%  154M 1s
+  1500K .......... .......... .......... .......... .......... 33%  177M 1s
+  1550K .......... .......... .......... .......... .......... 34% 1.40M 1s
+  1600K .......... .......... .......... .......... .......... 35% 1.08M 1s
+  1650K .......... .......... .......... .......... .......... 36%  139M 1s
+  1700K .......... .......... .......... .......... .......... 37%  118M 1s
+  1750K .......... .......... .......... .......... .......... 38%  141M 1s
+  1800K .......... .......... .......... .......... .......... 39%  122M 1s
+  1850K .......... .......... .......... .......... .......... 40%  112M 1s
+  1900K .......... .......... .......... .......... .......... 41%  125M 1s
+  1950K .......... .......... .......... .......... .......... 42%  110M 1s
+  2000K .......... .......... .......... .......... .......... 43% 83.7M 1s
+  2050K .......... .......... .......... .......... .......... 44% 93.3M 1s
+  2100K .......... .......... .......... .......... .......... 45%  115M 1s
+  2150K .......... .......... .......... .......... .......... 46%  179M 1s
+  2200K .......... .......... .......... .......... .......... 47%  109M 1s
+  2250K .......... .......... .......... .......... .......... 49% 70.9M 1s
+  2300K .......... .......... .......... .......... .......... 50% 76.0M 1s
+  2350K .......... .......... .......... .......... .......... 51% 58.2M 1s
+  2400K .......... .......... .......... .......... .......... 52% 81.9M 1s
+  2450K .......... .......... .......... .......... .......... 53% 77.2M 1s
+  2500K .......... .......... .......... .......... .......... 54% 75.2M 1s
+  2550K .......... .......... .......... .......... .......... 55% 76.3M 0s
+  2600K .......... .......... .......... .......... .......... 56% 71.4M 0s
+  2650K .......... .......... .......... .......... .......... 57% 93.5M 0s
+  2700K .......... .......... .......... .......... .......... 58% 63.3M 0s
+  2750K .......... .......... .......... .......... .......... 59% 93.3M 0s
+  2800K .......... .......... .......... .......... .......... 60% 88.2M 0s
+  2850K .......... .......... .......... .......... .......... 61%  174M 0s
+  2900K .......... .......... .......... .......... .......... 62%  189M 0s
+  2950K .......... .......... .......... .......... .......... 63%  159M 0s
+  3000K .......... .......... .......... .......... .......... 65%  172M 0s
+  3050K .......... .......... .......... .......... .......... 66%  172M 0s
+  3100K .......... .......... .......... .......... .......... 67% 1.89M 0s
+  3150K .......... .......... .......... .......... .......... 68% 1.04M 0s
+  3200K .......... .......... .......... .......... .......... 69% 60.3M 0s
+  3250K .......... .......... .......... .......... .......... 70% 81.5M 0s
+  3300K .......... .......... .......... .......... .......... 71% 97.6M 0s
+  3350K .......... .......... .......... .......... .......... 72% 88.2M 0s
+  3400K .......... .......... .......... .......... .......... 73% 86.8M 0s
+  3450K .......... .......... .......... .......... .......... 74% 75.8M 0s
+  3500K .......... .......... .......... .......... .......... 75%  114M 0s
+  3550K .......... .......... .......... .......... .......... 76%  189M 0s
+  3600K .......... .......... .......... .......... .......... 77% 71.2M 0s
+  3650K .......... .......... .......... .......... .......... 78% 88.0M 0s
+  3700K .......... .......... .......... .......... .......... 79% 88.9M 0s
+  3750K .......... .......... .......... .......... .......... 80% 86.6M 0s
+  3800K .......... .......... .......... .......... .......... 82% 82.1M 0s
+  3850K .......... .......... .......... .......... .......... 83% 84.7M 0s
+  3900K .......... .......... .......... .......... .......... 84% 83.4M 0s
+  3950K .......... .......... .......... .......... .......... 85% 70.9M 0s
+  4000K .......... .......... .......... .......... .......... 86%  112M 0s
+  4050K .......... .......... .......... .......... .......... 87% 90.2M 0s
+  4100K .......... .......... .......... .......... .......... 88% 71.0M 0s
+  4150K .......... .......... .......... .......... .......... 89% 91.0M 0s
+  4200K .......... .......... .......... .......... .......... 90% 42.6M 0s
+  4250K .......... .......... .......... .......... .......... 91% 89.8M 0s
+  4300K .......... .......... .......... .......... .......... 92%  135M 0s
+  4350K .......... .......... .......... .......... .......... 93%  160M 0s
+  4400K .......... .......... .........Archive:  nano.zip
+   creating: nano_project/2122_nano_folio/
+   creating: nano_project/2122_nano_folio/css/
+  inflating: nano_project/2122_nano_folio/css/magnific-popup.min.css  
+  inflating: nano_project/2122_nano_folio/css/tooplate-style.css  
+   creating: nano_project/2122_nano_folio/fontawesome/
+   creating: nano_project/2122_nano_folio/fontawesome/css/
+  inflating: nano_project/2122_nano_folio/fontawesome/css/all.min.css  
+  inflating: nano_project/2122_nano_folio/fontawesome/LICENSE.txt  
+   creating: nano_project/2122_nano_folio/fontawesome/webfonts/
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.eot  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.svg  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.ttf  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.woff  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.woff2  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.eot  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.svg  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.ttf  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.woff  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.woff2  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.eot  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.svg  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.ttf  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.woff  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.woff2  
+   creating: nano_project/2122_nano_folio/img/
+. .......... .......... 94%  166M 0s
+  4450K .......... .......... .......... .......... .......... 95%  156M 0s
+  4500K .......... .......... .......... .......... .......... 96%  191M 0s
+  4550K .......... .......... .......... .......... .......... 98%  173M 0s
+  4600K .......... .......... .......... .......... .......... 99%  159M 0s
+  4650K .......... .......... .......... .......... .         100%  214M=0.7s
+
+2026-01-05 16:04:27 (6.43 MB/s) - ‘nano.zip’ saved [4804274/4804274]
+
+  inflating: nano_project/2122_nano_folio/img/img-01.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-02.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-03.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-04.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-05.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-06.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-07.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-08.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-09.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-10.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-11.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-12.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-01.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-02.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-03.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-04.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-05.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-06.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-07.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-08.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-09.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-10.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-11.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-12.jpg  
+  inflating: nano_project/2122_nano_folio/index.html  
+   creating: nano_project/2122_nano_folio/js/
+  inflating: nano_project/2122_nano_folio/js/imagesloaded.pkgd.min.js  
+  inflating: nano_project/2122_nano_folio/js/isotope.pkgd.min.js  
+  inflating: nano_project/2122_nano_folio/js/jquery.magnific-popup.min.js  
+  inflating: nano_project/2122_nano_folio/js/jquery.min.js  
+Deployment completed!
+You can access your project at: http://4.155.61.154
+mehran [ ~ ]$ 
+mehran [ ~ ]$ 
+mehran [ ~ ]$ ssh azureuser@4.155.61.154  
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-1044-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Jan  5 16:18:27 UTC 2026
+
+  System load:  0.0               Processes:             120
+  Usage of /:   6.4% of 28.89GB   Users logged in:       0
+  Memory usage: 4%                IPv4 address for eth0: 10.0.0.4
+  Swap usage:   0%
+
+ * Strictly confined Kubernetes makes edge and IoT secure. Learn how MicroK8s
+   just raised the bar for easy, resilient and secure K8s cluster deployment.
+
+   https://ubuntu.com/engage/secure-kubernetes-at-the-edge
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+New release '24.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+azureuser@nano-vm:~$ mkdir -p ~/Azure-Projects/Project_5
+azureuser@nano-vm:~$ cd ~/Azure-Projects/Project_5
+azureuser@nano-vm:~/Azure-Projects/Project_5$ wget -O nano.zip https://www.tooplate.com/zip-templates/2122_nano_folio.zip
+unzip nano.zip -d nano_project
+--2026-01-05 16:20:15--  https://www.tooplate.com/zip-templates/2122_nano_folio.zip
+Resolving www.tooplate.com (www.tooplate.com)... 72.52.176.250
+Connecting to www.tooplate.com (www.tooplate.com)|72.52.176.250|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 4804274 (4.6M) [application/zip]
+Saving to: ‘nano.zip’
+
+nano.zip                       100%[==================================================>]   4.58M  6.98MB/s    in 0.7s    
+
+2026-01-05 16:20:16 (6.98 MB/s) - ‘nano.zip’ saved [4804274/4804274]
+
+Archive:  nano.zip
+   creating: nano_project/2122_nano_folio/
+   creating: nano_project/2122_nano_folio/css/
+  inflating: nano_project/2122_nano_folio/css/magnific-popup.min.css  
+  inflating: nano_project/2122_nano_folio/css/tooplate-style.css  
+   creating: nano_project/2122_nano_folio/fontawesome/
+   creating: nano_project/2122_nano_folio/fontawesome/css/
+  inflating: nano_project/2122_nano_folio/fontawesome/css/all.min.css  
+  inflating: nano_project/2122_nano_folio/fontawesome/LICENSE.txt  
+   creating: nano_project/2122_nano_folio/fontawesome/webfonts/
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.eot  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.svg  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.ttf  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.woff  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-brands-400.woff2  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.eot  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.svg  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.ttf  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.woff  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-regular-400.woff2  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.eot  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.svg  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.ttf  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.woff  
+  inflating: nano_project/2122_nano_folio/fontawesome/webfonts/fa-solid-900.woff2  
+   creating: nano_project/2122_nano_folio/img/
+  inflating: nano_project/2122_nano_folio/img/img-01.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-02.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-03.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-04.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-05.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-06.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-07.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-08.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-09.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-10.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-11.jpg  
+  inflating: nano_project/2122_nano_folio/img/img-12.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-01.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-02.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-03.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-04.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-05.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-06.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-07.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-08.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-09.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-10.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-11.jpg  
+  inflating: nano_project/2122_nano_folio/img/tn-img-12.jpg  
+  inflating: nano_project/2122_nano_folio/index.html  
+   creating: nano_project/2122_nano_folio/js/
+  inflating: nano_project/2122_nano_folio/js/imagesloaded.pkgd.min.js  
+  inflating: nano_project/2122_nano_folio/js/isotope.pkgd.min.js  
+  inflating: nano_project/2122_nano_folio/js/jquery.magnific-popup.min.js  
+  inflating: nano_project/2122_nano_folio/js/jquery.min.js  
+azureuser@nano-vm:~/Azure-Projects/Project_5$ cp -r nano_project/*/* .
+azureuser@nano-vm:~/Azure-Projects/Project_5$ ls
+css  fontawesome  img  index.html  js  nano.zip  nano_project
+azureuser@nano-vm:~/Azure-Projects/Project_5$ nano README.md
+azureuser@nano-vm:~/Azure-Projects/Project_5$ nano README.md
+azureuser@nano-vm:~/Azure-Projects/Project_5$ scp azureuser@4.155.61.154:/home/azureuser/deploy-vm.sh ~/Azure-Projects/Pro
+ject_5/
+The authenticity of host '4.155.61.154 (4.155.61.154)' can't be established.
+ED25519 key fingerprint is SHA256:xHeY74AHByX3FwXI/luyFilfxOQULGRfBU4/Y8MO0cw.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '4.155.61.154' (ED25519) to the list of known hosts.
+azureuser@4.155.61.154: Permission denied (publickey).
